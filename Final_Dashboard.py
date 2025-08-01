@@ -30,7 +30,7 @@ for key in ["selected_cdt_code", "suggestion_confirmed", "last_suggestion", "sel
 
 # --- Sidebar: Patient Selection ---
 with st.sidebar:
-    st.image("C:\\Users\\satis\\Downloads\\All in one assist.png", use_container_width=True)
+    st.image("All in one assist.png", use_container_width=True)
     st.markdown("### 🦷 Select Patient")
     selected_name = st.selectbox("Patient", patients["Name"].tolist())
     st.markdown("---")
