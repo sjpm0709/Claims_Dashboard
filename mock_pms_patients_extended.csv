@@ -1,0 +1,26 @@
+PatientID,Name,DOB,Gender,Phone,Relationship,Subscriber Name,Subscriber ID,Address,Tooth Number,Surface,Date of Service,Clinical Notes,Procedure,Fee
+PMS001,Alice Johnson,15-02-1991,Female,555-123-444,Child,Bryan Johnson,SUB001,"101 Dental St, City 1, State",22,DO,21-07-2025,Patient has distal caries with pain on chewing.,Fluoride treatment applied.,350
+PMS002,Cynthia lee,15-03-1992,Female,555-256-256,Spouse,Rutherford,SUB002,"102 Dental St, City 2, State",3,DO,20-07-2025,Recurrent decay under old amalgam filling.,Composite restoration for occlusal decay.,200
+PMS003,Jacob bethel,15-04-1993,Male,555-656-356,Spouse,Ben Bethel,SUB003,"103 Dental St, City 3, State",3,MOD,19-07-2025,Recurrent decay under old amalgam filling.,Composite restoration for occlusal decay.,85
+PMS004,Maya fortis,15-05-1994,Female,555-196-365,Self,Jordan Fortis,SUB004,"104 Dental St, City 4, State",22,B,18-07-2025,Patient has distal caries with pain on chewing.,Simple cleaning and prophylaxis.,350
+PMS005,Rebecca moore,15-06-1995,Female,555-685-345,Child,Calum Moore,SUB005,"105 Dental St, City 5, State",22,MOD,25-07-2025,Patient has distal caries with pain on chewing.,Fluoride treatment applied.,120
+PMS006,Malcom marshal,15-07-1996,Male,555-398-657,Child,Bill Moore,SUB006,"106 Dental St, City 6, State",19,B,11-07-2025,"Patient complains of sensitivity on biting, fractured cusp suspected.",Sealant applied to molar surface.,200
+PMS007,Ravindra Jadeja,15-08-1997,Male,555-123-444,Spouse,Surendra Jadeja,SUB007,"107 Dental St, City 7, State",22,MOD,17-07-2025,"Crown margin leaking, sensitivity present.",Crown placement advised after buildup.,75
+PMS008,Surendra singh sodhi,15-09-1998,Male,555-256-256,Self,Amrendra singh Sodhi,SUB008,"108 Dental St, City 8, State",14,O,11-07-2025,Recurrent decay under old amalgam filling.,Fluoride treatment applied.,350
+PMS009,Mark bolden,15-01-1999,Male,555-656-356,Spouse,Jamie Bolden,SUB009,"109 Dental St, City 9, State",14,O,21-07-2025,"Old composite filling fractured, replacement needed.",Amalgam filling for deep cavity.,200
+PMS0010,Jamie cox,15-02-1990,Male,555-196-365,Self,Barbarra cox,SUB0010,"110 Dental St, City 10, State",30,MO,20-07-2025,"Composite restoration worn out, needs replacement.",Composite restoration for occlusal decay.,120
+PMS0011,Kamala jordan,15-03-1991,Female,555-398-657,Spouse,Byron Jordan,SUB0011,"111 Dental St, City 11, State",3,MO,19-07-2025,"Crown margin leaking, sensitivity present.",Amalgam filling for deep cavity.,350
+PMS0012,Jeff Bezos,15-04-1992,Male,555-256-256,Self,Ruben Bezos,SUB0012,"112 Dental St, City 12, State",14,MOD,18-07-2025,"Patient complains of sensitivity on biting, fractured cusp suspected.",Fluoride treatment applied.,75
+PMS0013,John Lee,15-05-1993,Male,555-656-356,Spouse,Micheal Lee,SUB0013,"113 Dental St, City 13, State",3,MO,20-07-2025,"Crown margin leaking, sensitivity present.",Amalgam filling for deep cavity.,200
+PMS0014,Joanna Lee,15-06-1994,Female,555-196-365,Self,Micheal Lee,SUB0014,"114 Dental St, City 14, State",19,B,21-07-2025,"Old composite filling fractured, replacement needed.",Temporary filling placed before root canal.,90
+PMS0015,Ben Stokes,15-07-1995,Male,555-398-657,Spouse,Jamie Stokes,SUB0015,"115 Dental St, City 15, State",22,B,20-07-2025,"Routine cleaning and checkup, no issues found.",Sealant applied to molar surface.,85
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,
