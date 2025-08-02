@@ -36,16 +36,17 @@ mock_patients = [
     for i in range(1, 11)
 ]
 
-def generate_mock_patients_csv(file_path="mock_pms_patients.csv"):
+def generate_mock_patients_csv(file_path="mock_pms_patients_extended.csv"):
     df = pd.DataFrame(mock_patients)
     df.to_csv(file_path, index=False)
     print(f"✅ Mock PMS patient data generated and saved at:\n{file_path}")
 
 def get_mock_patients():
-    return pd.read_csv("mock_pms_patients.csv")
+    return pd.read_csv("mock_pms_patients_extended.csv")
 
 if __name__ == "__main__":
-    generate_mock_patients_csv()
+    generate_mock_patients_extended_csv()
+
 
 
 
