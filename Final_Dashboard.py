@@ -12,7 +12,7 @@ st.set_page_config(page_title="All-in-One Assist | Claim Assistant", page_icon="
 # --- Load Data ---
 cdt_df = pd.read_csv("CDT_AI_Training_100_New_Rows.csv")
 claim_df = pd.read_csv("cdt_claim_fields.csv")
-patients = mock_pms.get_mock_patients_extended()
+patients = mock_pms.get_mock_patients()
 CLAIM_LOG_PATH = "claims_log.csv"
 
 # --- OpenAI Setup ---
@@ -183,4 +183,5 @@ with tab2:
             st.info("No claims submitted yet.")
     else:
         st.info("No claims submitted yet.")
+
 
