@@ -1,4 +1,3 @@
-te
 import pandas as pd
 import random
 
@@ -46,6 +45,7 @@ def get_mock_patients():
 
 if __name__ == "__main__":
     generate_mock_patients_csv()
+
 
 
 
