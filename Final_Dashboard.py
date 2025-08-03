@@ -4,7 +4,13 @@ import streamlit as st
 import pandas as pd
 import os
 from openai import OpenAI
+from supabase import create_client
 import mock_pms
+
+# --- Supabase Setup ---
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # --- Streamlit Page Settings ---
 st.set_page_config(page_title="All-in-One Assist | Claim Assistant", page_icon="🦷", layout="wide")
@@ -13,7 +19,6 @@ st.set_page_config(page_title="All-in-One Assist | Claim Assistant", page_icon="
 cdt_df = pd.read_csv("CDT_AI_Training_100_New_Rows.csv")
 claim_df = pd.read_csv("cdt_claim_fields.csv")
 patients = mock_pms.get_mock_patients()
-CLAIM_LOG_PATH = "claims_log.csv"
 
 # --- OpenAI Setup ---
 api_key = st.secrets.get("OPENROUTER_API_KEY")
@@ -144,25 +149,35 @@ Reason: <why this fits>
 
         edited_fields = {field: st.text_input(field, value=val) for field, val in field_data.items()}
 
-        if st.button("Generate & Download Claim CSV"):
-            claim_output_df = pd.DataFrame([edited_fields])
-            claim_output_df.to_csv("filled_ada_claim.csv", index=False)
+         from datetime import datetime
 
-            # Log to dashboard
-            if os.path.exists(CLAIM_LOG_PATH):
-                log_df = pd.read_csv(CLAIM_LOG_PATH)
-                log_df = pd.concat([log_df, claim_output_df], ignore_index=True)
-            else:
-                log_df = claim_output_df
-            log_df.to_csv(CLAIM_LOG_PATH, index=False)
 
-            with open("filled_ada_claim.csv", "rb") as f:
-                st.download_button("⬇ Download CSV", f, file_name="filled_ada_claim.csv", mime="text/csv")
+        def clean_dates(claim_data):
+            for key, value in claim_data.items():
+                if "date" in key or "dob" in key:
+                    try:
+                        # Handle DD-MM-YYYY and similar formats
+                        parsed = datetime.strptime(value, "%d-%m-%Y")
+                        claim_data[key] = parsed.strftime("%Y-%m-%d")
+                    except:
+                        try:
+                            parsed = datetime.strptime(value, "%d/%m/%Y")
+                            claim_data[key] = parsed.strftime("%Y-%m-%d")
+                        except:
+                            pass  # skip conversion if already ISO or invalid
+            return claim_data
 
-        if st.button("🔁 Start Over"):
-            for key in ["selected_cdt_code", "last_suggestion"]:
-                st.session_state[key] = None
-            st.session_state.suggestion_confirmed = False
+
+        if st.button("📤 Submit to Supabase"):
+            raw_claim_data = {k.lower().replace(" ", "_"): v for k, v in edited_fields.items()}
+            cleaned = {k: v for k, v in raw_claim_data.items() if str(v).strip() != ""}
+            cleaned = clean_dates(cleaned)  # 👈 convert dates to YYYY-MM-DD
+
+            try:
+                supabase.table("claims").insert(cleaned).execute()
+                st.success("✅ Claim submitted and stored in Supabase.")
+            except Exception as e:
+                st.error(f"❌ Failed to save to Supabase: {e}")
 
 # ----------------------------
 # Tab 2: Claims Dashboard
@@ -183,5 +198,6 @@ with tab2:
             st.info("No claims submitted yet.")
     else:
         st.info("No claims submitted yet.")
+
 
 
