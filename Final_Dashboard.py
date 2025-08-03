@@ -185,19 +185,22 @@ Reason: <why this fits>
 with tab2:
     st.markdown("## Claims Submission Dashboard")
 
-    if os.path.exists(CLAIM_LOG_PATH):
-        df = pd.read_csv(CLAIM_LOG_PATH)
+    try:
+        res = supabase.table("claims").select("*").order("created_at", desc=True).execute()
+        df = pd.DataFrame(res.data)
+
         if not df.empty:
             col1, col2, col3 = st.columns(3)
             col1.metric("Total Claims", len(df))
-            col2.metric("Avg Fee", f"${df['Fee'].astype(float).mean():.2f}" if 'Fee' in df.columns else "-")
-            col3.metric("CDT Codes Used", df['Procedure Code'].nunique() if 'Procedure Code' in df.columns else "-")
+            col2.metric("Avg Fee", f"${df['fee'].astype(float).mean():.2f}" if 'fee' in df.columns else "-")
+            col3.metric("Unique CDT Codes", df['procedure_code'].nunique() if 'procedure_code' in df.columns else "-")
             st.divider()
             st.dataframe(df, use_container_width=True)
         else:
             st.info("No claims submitted yet.")
-    else:
-        st.info("No claims submitted yet.")
+    except Exception as e:
+        st.error(f"❌ Failed to load dashboard data from Supabase:\n\n{e}")
+
 
 
 
